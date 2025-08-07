@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { User, Mail, Phone, Lock, Eye, EyeOff, ChevronLeft } from 'lucide-react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,6 +15,11 @@ const SignUpForm = () => {
     password: '',
     confirmPassword: ''
   });
+
+      const router = useRouter()
+    const handleBack = () => {
+      router.back()
+    }
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -50,7 +57,7 @@ const SignUpForm = () => {
       >
         {/* Header */}
         <motion.div variants={itemVariants} className="flex items-center mb-8">
-          <button className="p-2 hover:bg-gray-100 rounded-full transition-colors mr-4">
+          <button className="p-2 hover:bg-gray-100 rounded-full transition-colors mr-4" onClick={handleBack}>
             <ChevronLeft className="w-6 h-6 text-gray-600" />
           </button>
           <h1 className="text-2xl font-bold text-gray-900">Create Your Account</h1>
@@ -163,25 +170,29 @@ const SignUpForm = () => {
 
           {/* Sign Up Button */}
           <motion.div variants={itemVariants} className="pt-6">
-            <motion.button
-              type="submit"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 focus:ring-4 focus:ring-orange-200"
-            >
-              Sign Up
-            </motion.button>
+            <Link href={'/dashboard'}>
+                <motion.button
+                type="submit"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 focus:ring-4 focus:ring-orange-200"
+                >
+                Sign Up
+                </motion.button>
+            </Link>
           </motion.div>
 
           {/* Login Link */}
           <motion.div variants={itemVariants} className="text-center pt-4">
             <span className="text-gray-600">Already Registered? </span>
-            <button
-              type="button"
-              className="text-orange-600 font-medium hover:text-orange-700 transition-colors focus:underline"
-            >
-              Log In
-            </button>
+            <Link href={'/login'}>
+                <button
+                type="button"
+                className="text-orange-600 font-medium hover:text-orange-700 transition-colors focus:underline"
+                >
+                Log In
+                </button>
+            </Link>
           </motion.div>
         </motion.form>
       </motion.div>

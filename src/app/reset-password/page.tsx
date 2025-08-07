@@ -4,12 +4,20 @@ import { motion } from 'framer-motion'
 import { ChevronLeft, Eye, EyeOff } from 'lucide-react'
 import Image from 'next/image'
 import { RPImage } from '../../../public'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [showNewPassword, setShowNewPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+
+
+      const router = useRouter()
+    const handleBack = () => {
+      router.back()
+    }
 
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -53,7 +61,7 @@ const ResetPassword = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+        <button className="p-2 hover:bg-gray-100 rounded-full transition-colors" onClick={handleBack}>
           <ChevronLeft className="w-6 h-6 text-gray-700" />
         </button>
         <h1 className="text-lg font-semibold text-gray-900 ml-4">Reset Password</h1>
@@ -147,6 +155,7 @@ const ResetPassword = () => {
             </div>
 
             {/* Submit Button */}
+            <Link href={'/dashboard'}>
             <motion.button
               type="submit"
               className="w-full bg-orange-400 hover:bg-orange-500 text-white font-semibold py-4 rounded-xl transition-colors duration-200 shadow-sm"
@@ -156,6 +165,7 @@ const ResetPassword = () => {
             >
               Reset Password
             </motion.button>
+            </Link>
           </motion.form>
         </motion.div>
       </motion.div>

@@ -56,7 +56,7 @@ export default function Home() {
             whileTap={{ scale: 0.98 }}
             className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-6 rounded-2xl transition-colors duration-200 shadow-lg"
           >
-            Get Started
+            <Link href={'/login'}> Get Started </Link>
           </motion.button>
           
           <div className="text-center">

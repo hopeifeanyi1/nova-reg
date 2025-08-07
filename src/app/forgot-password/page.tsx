@@ -4,10 +4,17 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FPImage } from '../../../public'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('')
 
+    const router = useRouter()
+  const handleBack = () => {
+    router.back()
+  }
+  
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Header */}
@@ -17,7 +24,7 @@ const ForgotPasswordPage = () => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+        <button className="p-2 hover:bg-gray-100 rounded-full transition-colors" onClick={handleBack}>
           <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
@@ -70,7 +77,7 @@ const ForgotPasswordPage = () => {
                 />
               </div>
             </div>
-
+            <Link href={'/reset-password'}>
             <motion.button
               className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-6 rounded-xl transition-colors duration-200 shadow-lg hover:shadow-xl"
               whileHover={{ scale: 1.02 }}
@@ -78,6 +85,7 @@ const ForgotPasswordPage = () => {
             >
               Send Reset Link
             </motion.button>
+            </Link>
           </div>
 
           <motion.div 
@@ -89,7 +97,7 @@ const ForgotPasswordPage = () => {
             <p className="text-gray-600">
               Remember your password?{' '}
               <button className="text-orange-500 font-medium hover:text-orange-600 transition-colors underline underline-offset-2">
-                Log In
+                <Link href={'/login'}>Log In</Link>
               </button>
             </p>
           </motion.div>
