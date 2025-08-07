@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Logo, Welcome } from "../../public";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -64,7 +65,9 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               className="text-orange-500 hover:text-orange-600 font-semibold transition-colors duration-200"
             >
-              Log In
+              <Link href={'/login'}>
+                Log In
+              </Link>
             </motion.button>
           </div>
         </motion.div>
