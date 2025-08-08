@@ -181,14 +181,16 @@ const LoginPage = () => {
         </motion.div>
 
         {/* Login Button */}
-        <motion.button 
-          className="w-full bg-gradient-to-r from-orange-400 to-orange-500 text-white font-medium py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
-          variants={itemVariants}
-          whileHover={{ y: -2 }}
-          whileTap={{ y: 0 }}
-        >
-          Log In
-        </motion.button>
+        <Link href={'/dashboard'}>
+            <motion.button 
+            className="w-full bg-gradient-to-r from-orange-400 to-orange-500 text-white font-medium py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
+            variants={itemVariants}
+            whileHover={{ y: -2 }}
+            whileTap={{ y: 0 }}
+            >
+            Log In
+            </motion.button>
+        </Link>
 
         {/* Sign Up Link */}
         <motion.div 
